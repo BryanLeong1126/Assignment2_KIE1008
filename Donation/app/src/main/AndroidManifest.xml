@@ -10,13 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Donation">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".DonorInfoDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".SignInActivity"
             android:exported="false" />
         <activity
             android:name=".RegistrationActivity"
@@ -25,7 +28,7 @@
             android:name=".InfoDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".SignInActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,4 +37,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

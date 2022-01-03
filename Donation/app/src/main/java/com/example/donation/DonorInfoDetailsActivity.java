@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -44,6 +45,7 @@ public class DonorInfoDetailsActivity extends AppCompatActivity {
     private CircleImageView donorProfileImage;
     private TextInputEditText donorFullName, donorIdNumber, donorPhoneNumber, donorEmergencyNumber, donorEmail, donorPassword;
     private Button donorContinueButton;
+    private TextView donorSignInOption;
     private Uri resultUri;
     private ProgressDialog loader;
     private FirebaseAuth mAuth;
@@ -78,6 +80,7 @@ public class DonorInfoDetailsActivity extends AppCompatActivity {
         donorEmail = findViewById(R.id.donorEmail);
         donorPassword = findViewById(R.id.donorPassword);
         donorContinueButton = findViewById(R.id.donorContinueButton);
+        donorSignInOption = findViewById(R.id.donorSignInOption);
         loader = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
 
@@ -217,6 +220,13 @@ public class DonorInfoDetailsActivity extends AppCompatActivity {
                 }
             }
         } );
+        donorSignInOption.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(DonorInfoDetailsActivity.this, SignInActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

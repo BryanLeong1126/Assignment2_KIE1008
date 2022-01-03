@@ -2,6 +2,7 @@ package com.example.donation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,6 +31,7 @@ public class InfoDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info_details);
 
         recipientAREA = findViewById(R.id.recipientArea);
+        recipientContinueButton = findViewById(R.id.recipientContinueButton);
 
         adapterAreas = new ArrayAdapter<String>(this,R.layout.list_area, areas);
         recipientAREA.setAdapter(adapterAreas);
@@ -39,6 +41,14 @@ public class InfoDetailsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String area = adapterView.getItemAtPosition(i).toString();
                 Toast.makeText(getApplicationContext(),"Area: "+area, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        recipientContinueButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(InfoDetailsActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

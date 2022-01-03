@@ -16,7 +16,7 @@ import android.widget.TextView;
 public class SplashScreenActivity extends AppCompatActivity {
 
     private ImageView donationLogo;
-    private TextView frontTitle, introQuotes;
+    private TextView frontTitle, introQuotes, signInOption;
     private Button donorButton, recipientButton;
 
     Animation topAnimation, bottomAnimation;
@@ -31,6 +31,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         frontTitle = findViewById(R.id.frontTitle);
         donorButton = findViewById(R.id.donorButton);
         recipientButton = findViewById(R.id.recipientButton);
+        signInOption = findViewById(R.id.signInOption);
         introQuotes = findViewById(R.id.introQuotes);
 
         topAnimation = AnimationUtils.loadAnimation(this, R.anim.top_animation);
@@ -54,6 +55,14 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(SplashScreenActivity.this, InfoDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        signInOption.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(SplashScreenActivity.this, SignInActivity.class);
                 startActivity(intent);
             }
         });

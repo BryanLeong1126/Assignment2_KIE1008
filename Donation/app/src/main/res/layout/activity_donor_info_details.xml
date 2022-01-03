@@ -147,7 +147,7 @@
                         android:id="@+id/donorEmergencyNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter emergency contact number:"
+                        android:hint="Enter emergency contact:"
                         android:inputType="number"
                         android:drawablePadding="10dp"
                         android:textColor="#000"
@@ -215,7 +215,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
-                        android:hint="Create a passwword:"
+                        android:hint="Create a password:"
                         android:inputType="text"
                         android:drawablePadding="10dp"
                         android:textColor="#000"
@@ -228,7 +228,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="55dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp">
 
@@ -244,6 +244,24 @@
                         android:textSize="20sp" />
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/donorSignInOption"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Have an account? Sign in"
+                        android:textStyle="bold"
+                        android:textColor="#464646"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
