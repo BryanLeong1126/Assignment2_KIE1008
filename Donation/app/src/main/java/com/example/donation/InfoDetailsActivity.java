@@ -7,12 +7,21 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputEditText;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class InfoDetailsActivity extends AppCompatActivity {
 
+    private CircleImageView recipientProfileImage;
+    private TextInputEditText recipientFullName, recipientIdNumber, recipientPhoneNumber, recipientEmergencyNumber, recipientEmail;
+    private Button recipientContinueButton;
+
     String[] areas = {"Perlis","Kedah","Kelantan","Terengganu","Penang","Perak","Pahang","Selangor","Negeri Sembilan","Malacca","Johor","Sabah","Sarawak"};
-    AutoCompleteTextView autoCompleteText;
+    AutoCompleteTextView recipientAREA, recipientArea;
     ArrayAdapter<String> adapterAreas;
 
     @Override
@@ -20,12 +29,12 @@ public class InfoDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_details);
 
-        autoCompleteText = findViewById(R.id.auto_complete_text);
+        recipientAREA = findViewById(R.id.recipientArea);
 
         adapterAreas = new ArrayAdapter<String>(this,R.layout.list_area, areas);
-        autoCompleteText.setAdapter(adapterAreas);
+        recipientAREA.setAdapter(adapterAreas);
 
-        autoCompleteText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        recipientAREA.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String area = adapterView.getItemAtPosition(i).toString();
