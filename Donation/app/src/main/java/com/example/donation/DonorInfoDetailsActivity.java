@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -84,7 +85,7 @@ public class DonorInfoDetailsActivity extends AppCompatActivity {
         loader = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
 
-        donorProfileImage.setOnClickListener(new View.OnClickListener() {
+        donorProfileImage.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
@@ -93,7 +94,7 @@ public class DonorInfoDetailsActivity extends AppCompatActivity {
             }
         });
 
-        donorContinueButton.setOnClickListener(new View.OnClickListener() {
+        donorContinueButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 final String email = donorEmail.getText().toString().trim();
@@ -143,7 +144,7 @@ public class DonorInfoDetailsActivity extends AppCompatActivity {
                                 userDatabaseRef = FirebaseDatabase.getInstance().getReference().child("users").child(currentUserId);
                                 HashMap userInfo = new HashMap();
                                 userInfo.put("id", currentUserId);
-                                userInfo.put("type", "donor");
+                                userInfo.put("type", "Donor");
                                 userInfo.put("email", email);
                                 userInfo.put("password", password);
                                 userInfo.put("name", fullName);
@@ -151,23 +152,7 @@ public class DonorInfoDetailsActivity extends AppCompatActivity {
                                 userInfo.put("phone number", phoneNumber);
                                 userInfo.put("emergency number", emergencyNumber);
                                 userInfo.put("living area", areas);
-                                userInfo.put("search", "donor"+areas);
-
-                                userDatabaseRef.updateChildren(userInfo).addOnCompleteListener(new OnCompleteListener() {
-                                    @Override
-                                    public void onComplete(@NonNull Task task) {
-                                        if(task.isSuccessful()){
-                                            Toast.makeText(DonorInfoDetailsActivity.this,"Data set successfully",Toast.LENGTH_SHORT).show();
-                                        }
-                                        else{
-                                            Toast.makeText(DonorInfoDetailsActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
-                                        }
-                                        Intent intent = new Intent(DonorInfoDetailsActivity.this,MainActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                        //loader.dismiss();
-                                    }
-                                });
+                                userInfo.put("search", "Donor"+areas);
 
                                 if(resultUri!=null){
                                     final StorageReference filePath = FirebaseStorage.getInstance().getReference().child("profile images").child(currentUserId);
@@ -196,7 +181,24 @@ public class DonorInfoDetailsActivity extends AppCompatActivity {
                                                     public void onSuccess(Uri uri) {
                                                         String imageUrl = uri.toString();
                                                         Map newImageMap = new HashMap();
-                                                        newImageMap.put("profilepictureurl", imageUrl);
+                                                        /*newImageMap.put("profile picture url", imageUrl);*/
+                                                        userInfo.put("profile picture url", imageUrl);
+
+                                                        userDatabaseRef.updateChildren(userInfo).addOnCompleteListener(new OnCompleteListener() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task task) {
+                                                                if(task.isSuccessful()){
+                                                                    Toast.makeText(DonorInfoDetailsActivity.this,"Data set successfully",Toast.LENGTH_SHORT).show();
+                                                                }
+                                                                else{
+                                                                    Toast.makeText(DonorInfoDetailsActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                                                                }
+                                                                Intent intent = new Intent(DonorInfoDetailsActivity.this,MainActivity.class);
+                                                                startActivity(intent);
+                                                                finish();
+                                                                //loader.dismiss();
+                                                            }
+                                                        });
 
                                                         userDatabaseRef.updateChildren(newImageMap).addOnCompleteListener(new OnCompleteListener() {
                                                             @Override
@@ -222,7 +224,7 @@ public class DonorInfoDetailsActivity extends AppCompatActivity {
                 }
             }
         } );
-        donorSignInOption.setOnClickListener(new View.OnClickListener(){
+        donorSignInOption.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(DonorInfoDetailsActivity.this, SignInActivity.class);

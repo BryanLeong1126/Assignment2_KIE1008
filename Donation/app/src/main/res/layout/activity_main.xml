@@ -43,7 +43,10 @@
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"
         app:headerLayout="@layout/header"
-        app:menu=""
+        app:menu="@menu/main_menu"
+        app:itemIconTint="@drawable/navigation_selector"
+        app:itemTextColor="@drawable/navigation_view_item_selected"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"/>
 </androidx.drawerlayout.widget.DrawerLayout>

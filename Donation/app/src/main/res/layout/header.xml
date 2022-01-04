@@ -1,60 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="210dp"
+    android:layout_height="310dp"
     android:orientation="vertical"
     android:background="@drawable/header_background"
     android:paddingTop="5dp"
     android:paddingLeft="20dp"
     android:paddingRight="20dp">
 
-    <TextView
-        android:id="@+id/navigationUserType"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Donor"
-        android:textSize="20sp"
-        android:textColor="#000"
-        android:textStyle="bold"/>
+        android:layout_marginLeft="5dp"
+        android:orientation="vertical">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/navigationUserImage"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/profileimage2"/>
+        <TextView
+            android:id="@+id/navigationUserType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65dp"
+            android:text="Donor"
+            android:textSize="30sp"
+            android:textColor="#000"
+            android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/navigationUserName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Full Name"
-        android:textSize="18sp"
-        android:textColor="#000"
-        android:textStyle="bold"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/navigationUserImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/profileimage2"/>
 
-    <TextView
-        android:id="@+id/navigationUserEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="example@gmail.com"
-        android:textSize="15sp"
-        android:textColor="#000"/>
+        <TextView
+            android:id="@+id/navigationUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Full Name"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/navigationUserPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Phone Number"
-        android:textSize="15sp"
-        android:textColor="#000"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp">
 
-    <TextView
-        android:id="@+id/navigationUserArea"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Area"
-        android:textSize="15sp"
-        android:textColor="#000"/>
+            <TextView
+                android:id="@+id/navigationUserEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="example@gmail.com"
+                android:textSize="15sp"
+                android:textColor="#000"/>
 
+            <TextView
+                android:id="@+id/navigationUserPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:textSize="15sp"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/navigationUserArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Area"
+                android:textSize="15sp"
+                android:textColor="#000"/>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

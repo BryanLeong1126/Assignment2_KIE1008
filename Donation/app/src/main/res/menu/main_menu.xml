@@ -69,4 +69,38 @@
             </group>
         </menu>
     </item>
+
+    <item android:title="Actions">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/profile"
+                    android:icon="@drawable/ic_person"
+                    android:title="Profile"/>
+                <item
+                    android:id="@+id/notification"
+                    android:icon="@drawable/ic_notification"
+                    android:title="Notification"/>
+                <item
+                    android:id="@+id/logOut"
+                    android:icon="@drawable/ic_logout"
+                    android:title="Log Out"/>
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Communicate">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/about"
+                    android:icon="@drawable/ic_info"
+                    android:title="About"/>
+                <item
+                    android:id="@+id/share"
+                    android:icon="@drawable/ic_share"
+                    android:title="Share"/>
+            </group>
+        </menu>
+    </item>
 </menu>

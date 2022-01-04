@@ -31,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.firebase.storage.UploadTask.TaskSnapshot;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -142,7 +143,7 @@ public class InfoDetailsActivity extends AppCompatActivity {
                                 userDatabaseRef = FirebaseDatabase.getInstance().getReference().child("users").child(currentUserId);
                                 HashMap userInfo = new HashMap();
                                 userInfo.put("id", currentUserId);
-                                userInfo.put("type", "recipient");
+                                userInfo.put("type", "Recipient");
                                 userInfo.put("email", email);
                                 userInfo.put("password", password);
                                 userInfo.put("name", fullName);
@@ -150,21 +151,8 @@ public class InfoDetailsActivity extends AppCompatActivity {
                                 userInfo.put("phone number", phoneNumber);
                                 userInfo.put("emergency number", emergencyNumber);
                                 userInfo.put("living area", areas);
-                                userInfo.put("search", "recipient"+areas);
+                                userInfo.put("search", "Recipient"+areas);
 
-                                userDatabaseRef.updateChildren(userInfo).addOnCompleteListener(new OnCompleteListener() {
-                                    @Override
-                                    public void onComplete(@NonNull Task task) {
-                                        if(task.isSuccessful()){
-                                            Toast.makeText(InfoDetailsActivity.this,"Data set successfully",Toast.LENGTH_SHORT).show();
-                                        }
-                                        else{
-                                            Toast.makeText(InfoDetailsActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
-                                        }
-                                        finish();
-                                        //loader.dismiss();
-                                    }
-                                });
 
                                 if(resultUri!=null){
                                     final StorageReference filePath = FirebaseStorage.getInstance().getReference().child("profile images").child(currentUserId);
@@ -183,9 +171,9 @@ public class InfoDetailsActivity extends AppCompatActivity {
                                             Toast.makeText(InfoDetailsActivity.this, "Image upload failed", Toast.LENGTH_SHORT).show();
                                         }
                                     });
-                                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                    uploadTask.addOnSuccessListener(new OnSuccessListener<TaskSnapshot>() {
                                         @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                        public void onSuccess(TaskSnapshot taskSnapshot) {
                                             if(taskSnapshot.getMetadata()!=null && taskSnapshot.getMetadata().getReference()!=null){
                                                 Task<Uri> result = taskSnapshot.getStorage().getDownloadUrl();
                                                 result.addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -193,7 +181,22 @@ public class InfoDetailsActivity extends AppCompatActivity {
                                                     public void onSuccess(Uri uri) {
                                                         String imageUrl = uri.toString();
                                                         Map newImageMap = new HashMap();
-                                                        newImageMap.put("profilepictureurl", imageUrl);
+                                                        /*newImageMap.put("profile picture url", imageUrl);*/
+                                                        userInfo.put("profile picture url", imageUrl);
+
+                                                        userDatabaseRef.updateChildren(userInfo).addOnCompleteListener(new OnCompleteListener() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task task) {
+                                                                if(task.isSuccessful()){
+                                                                    Toast.makeText(InfoDetailsActivity.this,"Data set successfully",Toast.LENGTH_SHORT).show();
+                                                                }
+                                                                else{
+                                                                    Toast.makeText(InfoDetailsActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                                                                }
+                                                                finish();
+                                                                //loader.dismiss();
+                                                            }
+                                                        });
 
                                                         userDatabaseRef.updateChildren(newImageMap).addOnCompleteListener(new OnCompleteListener() {
                                                             @Override
