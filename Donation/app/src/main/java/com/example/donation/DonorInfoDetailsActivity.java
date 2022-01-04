@@ -127,7 +127,7 @@ public class DonorInfoDetailsActivity extends AppCompatActivity {
                     //Toast.makeText(DonorInfoDetailsActivity.this,"Living area is required", Toast.LENGTH_SHORT).show();
                     return; }
                 else {
-                    loader.setMessage("Registering your informartion...");
+                    loader.setMessage("Registering your information...");
                     loader.setCanceledOnTouchOutside(false);
                     loader.show();
 
@@ -144,14 +144,14 @@ public class DonorInfoDetailsActivity extends AppCompatActivity {
                                 HashMap userInfo = new HashMap();
                                 userInfo.put("id", currentUserId);
                                 userInfo.put("type", "donor");
-                                userInfo.put("email", donorEmail);
-                                userInfo.put("password", donorPassword);
-                                userInfo.put("name", donorFullName);
-                                userInfo.put("id number", donorIdNumber);
-                                userInfo.put("phone number", donorPhoneNumber);
-                                userInfo.put("emergency number", donorEmergencyNumber);
-                                userInfo.put("living area", donorAREA);
-                                userInfo.put("search", "donor"+donorAREA);
+                                userInfo.put("email", email);
+                                userInfo.put("password", password);
+                                userInfo.put("name", fullName);
+                                userInfo.put("id number", idNumber);
+                                userInfo.put("phone number", phoneNumber);
+                                userInfo.put("emergency number", emergencyNumber);
+                                userInfo.put("living area", areas);
+                                userInfo.put("search", "donor"+areas);
 
                                 userDatabaseRef.updateChildren(userInfo).addOnCompleteListener(new OnCompleteListener() {
                                     @Override
@@ -162,6 +162,8 @@ public class DonorInfoDetailsActivity extends AppCompatActivity {
                                         else{
                                             Toast.makeText(DonorInfoDetailsActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
                                         }
+                                        Intent intent = new Intent(DonorInfoDetailsActivity.this,MainActivity.class);
+                                        startActivity(intent);
                                         finish();
                                         //loader.dismiss();
                                     }

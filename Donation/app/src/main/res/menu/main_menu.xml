@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/sentEmail"
+        android:icon="@drawable/ic_email"
+        android:title="Donors Email"/>
+
+    <item android:title="Areas">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/perlis"
+                    android:icon="@drawable/ic_flag"
+                    android:title="Perlis"/>
+                <item
+                    android:id="@+id/kedah"
+                    android:icon="@drawable/ic_flag"
+                    android:title="Kedah"/>
+                <item
+                    android:id="@+id/kelantan"
+                    android:icon="@drawable/ic_flag"
+                    android:title="Kelantan"/>
+                <item
+                    android:id="@+id/terengganu"
+                    android:icon="@drawable/ic_flag"
+                    android:title="Terengganu"/>
+                <item
+                    android:id="@+id/penang"
+                    android:icon="@drawable/ic_flag"
+                    android:title="Penang"/>
+                <item
+                    android:id="@+id/perak"
+                    android:icon="@drawable/ic_flag"
+                    android:title="Perak"/>
+                <item
+                    android:id="@+id/pahang"
+                    android:icon="@drawable/ic_flag"
+                    android:title="Pahang"/>
+                <item
+                    android:id="@+id/selangor"
+                    android:icon="@drawable/ic_flag"
+                    android:title="Selangor"/>
+                <item
+                    android:id="@+id/negerisembilan"
+                    android:icon="@drawable/ic_flag"
+                    android:title="Negeri Sembilan"/>
+                <item
+                    android:id="@+id/malacca"
+                    android:icon="@drawable/ic_flag"
+                    android:title="Malacca"/>
+                <item
+                    android:id="@+id/johor"
+                    android:icon="@drawable/ic_flag"
+                    android:title="Johor"/>
+                <item
+                    android:id="@+id/sabah"
+                    android:icon="@drawable/ic_flag"
+                    android:title="Sabah"/>
+                <item
+                    android:id="@+id/sarawak"
+                    android:icon="@drawable/ic_flag"
+                    android:title="Sarawak"/>
+            </group>
+        </menu>
+    </item>
+</menu>
